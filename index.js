@@ -44,8 +44,10 @@ i.e. is31Flavors(originalFlavors) will return TRUE.*/
 function is31Flavors(array){
     if(array.length = 31){
         console.log(true);
+        return true;
     }else{
         console.log(false);
+        return false;
     }
 }
 is31Flavors(originalFlavors);
@@ -58,7 +60,7 @@ Your function should accept:
 (1) an array 
 (2) a flavor
 
-Your function should add the flavor to the front of the array and console.log the resulting array.
+Your function should add the flavor to the front of the array and // console.log the resulting array.
 
 For example addFlavor("Rainbow Sherbert", originalFlavors) should return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"] */ 
 
@@ -66,6 +68,7 @@ function addFlavor(newFlavor, array){
     let newArr = array;
     newArr.unshift(newFlavor);
     console.log(newArr);
+    return newArr;
 }
 addFlavor("Rainbow Sherbert", originalFlavors)
 
@@ -75,14 +78,15 @@ Your function should accept:
 
 (1) an array 
 
-Your function should remove a flavor from the end of the array and console.log the resulting array.
+Your function should remove a flavor from the end of the array and // console.log the resulting array.
 
 For example removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla"]*/ 
 
 function removeLastFlavor(array){
     let newerArr = array;
     newerArr.pop();
-    console.log(newerArr);   
+    console.log(newerArr);  
+    return newerArr; 
 }
 removeLastFlavor(originalFlavors);
 /* Task 4: Write a function that returns a flavor at a given index in the array.
@@ -97,6 +101,7 @@ For example, getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", a
 function getFlavorByIndex(array, i){
     let newestArr = array;
     console.log(newestArr[i]);
+    return newestArr[i];
 }
 getFlavorByIndex(originalFlavors, 2)
 /* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that flavor from the array. 
@@ -120,6 +125,8 @@ function removeFlavorByName(array, flavor){
             }
         }
         console.log(firstArr);
+        return firstArr;
+        
 }
 removeFlavorByName(originalFlavors, "Vanilla");
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
@@ -130,9 +137,19 @@ Your function should accept:
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
 
-function copy(){
-    
+let copyArray = []
+
+function copy(newArr, origArr){
+    newArr = [...origArr]
+    newArr.push('Random Flavor')
+    console.log('newArr --> ', newArr)
+    console.log('origArr --> ', origArr)
+    return newArr
 }
+
+copy(copyArray, originalFlavors)
+
+
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
 
@@ -158,6 +175,7 @@ function filterByWord(array, string){
         }
     }
     console.log(filteredArray);
+    return filteredArray;
 }
 
 filterByWord(originalFlavors, "Chocolate")
